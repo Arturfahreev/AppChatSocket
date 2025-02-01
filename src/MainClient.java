@@ -10,6 +10,7 @@ public class MainClient {
 
         ClientThread clientThread = new ClientThread(new Socket("localhost", 8189));
         new Thread(clientThread).start();
+
     }
 }
 
@@ -24,10 +25,15 @@ class ClientThread implements Runnable {
         try (Scanner console = new Scanner(System.in);
             Scanner scanner = new Scanner(new InputStreamReader(socket.getInputStream()));
             PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true)) {
+            new Thread(() -> {
+                while (true) {
+                    System.out.println(scanner.nextLine());
+                }
+            } ).start();
+
             while (true) {
-                System.out.println("< Write message... >");
+                //System.out.println("< Write message... >");
                 printWriter.println(console.nextLine());
-                System.out.println(scanner.nextLine());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
