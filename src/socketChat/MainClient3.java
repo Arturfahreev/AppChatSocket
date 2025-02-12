@@ -1,3 +1,7 @@
+package socketChat;
+
+import socketChat.ClientThread;
+
 import java.io.IOException;
 import java.net.Socket;
 
