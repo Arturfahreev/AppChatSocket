@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class URLTest {
     public static void main(String[] args) throws IOException {
-        URL url = new URL("http://httpforever.com");
+        URL url = new URL("https://javarush.com/");
         InputStream inputStream = url.openStream();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line;
